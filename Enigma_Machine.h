@@ -1,14 +1,14 @@
-/*
- * Enigma_Machine.h
- *
- *  Created on: 27 Dec 2014
- *      Author: Dark Lord
- */
-
 #ifndef ENIGMA_MACHINE_H_
 #define ENIGMA_MACHINE_H_
 
-
+class Enigma_Machine {
+public:
+	Enigma_Machine(); //TODO: Proper constructor
+	virtual ~Enigma_Machine();
+	int use(int);
+private:
+	//Plugboard and rotors etc
+};
 
 
 
