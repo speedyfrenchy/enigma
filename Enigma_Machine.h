@@ -3,7 +3,7 @@
 
 class Enigma_Machine {
 public:
-	Enigma_Machine(Plugboard *plugboard, list<Rotor> rotors);
+	Enigma_Machine(list<Rotor> rotors, Plugboard *plugboard);
 	virtual ~Enigma_Machine();
 	int use(int);
 private:

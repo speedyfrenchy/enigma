@@ -5,9 +5,9 @@ using namespace std;
 #include "Plugboard.h"
 #include "Rotor.h"
 
-Enigma_Machine::Enigma_Machine(Plugboard *plugboard, list<Rotor> rotors) {
-	this->plugboard = plugboard;
+Enigma_Machine::Enigma_Machine( list<Rotor> rotors, Plugboard *plugboard) {
 	this->rotors = rotors;
+	this->plugboard = plugboard;
 }
 
 int Enigma_Machine::use_reflector(int i) {

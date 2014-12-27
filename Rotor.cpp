@@ -18,8 +18,6 @@ Rotor::Rotor(char* filename) {
 
 	while(rstream >> curr_int) {
 		numbersf[counter] = curr_int;
-		if(rtesting) cout << "Numbersf[" << counter << "] = "
-							<< numbersf[counter] << "\n";
 		counter++;
 	}
 
@@ -46,14 +44,10 @@ bool Rotor::rotate() {
 }
 
 int Rotor::use_forwards(int i) {
-	if(rtesting) cout << "After applying rotor forwards, " << i << " becomes "
-						<< numbersf[(i+offset)%26] << "\n";
 	return (numbersf[(i+offset)%26] - offset + 26)%26;
 }
 
 int Rotor::use_backwards(int i) {
-	if(rtesting) cout << "After applying rotor backwards, " << i << " becomes "
-						<< (numbersb[(i + offset)%26]- offset + 26)%26 << "\n";
 	return ((numbersb[(i + offset)%26] + 26) - offset)%26;
 }
 

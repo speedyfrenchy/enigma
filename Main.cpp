@@ -10,16 +10,35 @@ using namespace std;
 
 Enigma_Machine *machine;
 
-//Creates a new Enigma machine with the supplied plugboards and rotors
-void configure(int argc, char **argv) {
+//Creates a new plugboard from the supplied file
+Plugboard configure_plugboard(char* filename) {
+	return NULL;
+}
+
+//Creates a new rotor from the supplied file
+Rotor configure_rotor(char* filename) {
+	return NULL;
+}
+
+//Creates a new Enigma machine from the supplied arguments
+void configure_machine(int argc, char **argv) {
 	if(argc == 0) {
-		//invalid
+		throw invalid_argument("Invalid Argument - must be of the form: enigma [rotors] [plugboard]");
 	} else if(argc == 1) {
-		//no plugboard or rotors
+		machine = new Enigma_Machine(NULL, NULL);
 	} else if(argc == 2) {
-		//no  rotors
+		Plugboard plugboard = configure_plugboard(argv[1]);
+		machine = new Enigma_Machine(NULL, plugboard);
 	} else {
-		//First argument is plugboard, rest are rotors
+		Plugboard plugboard = configure_plugboard(argv[argc-1]);
+		Rotor *current_rotor;
+		list<Rotor> rotors;
+
+		for(int i =1; i < argc-1; i++) {
+			current_rotor = configure_rotor(argv[i]);
+			rotors.push_back(*current_rotor);
+		}
+		machine = new Enigma_Machine(rotors, plugboard);
 	}
 }
 
@@ -39,9 +58,9 @@ bool valid(char c) {
 }
 
 int main(int argc, char **argv) {
-	configure(argc, argv);
-	char curr_char;
+	configure_machine(argc, argv);
 
+	char curr_char;
 	while(cin >> curr_char) {
     // encode that character, then output it
 		if(valid(curr_char)) {
