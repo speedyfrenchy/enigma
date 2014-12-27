@@ -12,7 +12,27 @@ Enigma_Machine *machine;
 
 //Creates a new plugboard from the supplied file
 Plugboard configure_plugboard(char* filename) {
-	return NULL;
+	int plugs [26];
+	//Fill the array of plugs with an identity mapping
+	for(int i=0;i<26;i++) {
+		plugs[i] = i;
+	}
+	//Then, for each pair of plugs in the plugboard, map them to each other
+	int first = -1;  // Null values can cause problems,
+	int second = -1; //  So initialised to -1
+	fstream pbstream;
+	pbstream.open(filename);
+	if(pbstream.fail()) { // If the file didn't open properly
+		throw invalid_argument("The specified .pb file does not exist.");
+	}
+	while(pbstream >> first) {
+		pbstream >> second;
+		if((0 < first) && (first < 127) && (0 < second) && (second < 127) ) {
+			plugs[first] = second;
+			plugs[second] = first;
+		}
+	}
+	return new Plugboard(plugs);
 }
 
 //Creates a new rotor from the supplied file

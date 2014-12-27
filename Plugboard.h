@@ -4,7 +4,7 @@
 
 class Plugboard {
 public:
-	Plugboard(char*);
+	Plugboard(int[]);
 	virtual ~Plugboard();
 	int use(int);
 private:
