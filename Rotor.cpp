@@ -5,21 +5,9 @@ using namespace std;
 
 #include "Rotor.h"
 
-Rotor::Rotor(char* filename) {
+Rotor::Rotor(int numbers [26]) {
 	offset = 0;
-	//Fill the array numbersf with the values from the .rot file
-	int counter =0;
-	fstream rstream;
-	rstream.open(filename, fstream::in | fstream::out);
-	if(rstream.fail()) {
-			throw invalid_argument("The specified rotor does not exist.");
-		}
-	int curr_int;
-
-	while(rstream >> curr_int) {
-		numbersf[counter] = curr_int;
-		counter++;
-	}
+	numbersf = numbers;
 
 	//Now, using numbersf, create numbersb
 	for(int i = 0; i < 26; i++) {

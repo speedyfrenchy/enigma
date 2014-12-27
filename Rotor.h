@@ -3,7 +3,7 @@
 
 class Rotor {
 public:
-	Rotor(char*);
+	Rotor(int[]);
 	virtual ~Rotor();
 	int use_forwards(int);
 	int use_backwards(int);

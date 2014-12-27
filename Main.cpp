@@ -17,7 +17,20 @@ Plugboard configure_plugboard(char* filename) {
 
 //Creates a new rotor from the supplied file
 Rotor configure_rotor(char* filename) {
-	return NULL;
+	int numbers [26];
+	//Fill the array numbers with the values from the .rot file
+	int counter =0;
+	fstream rstream;
+	rstream.open(filename, fstream::in | fstream::out);
+	if(rstream.fail()) {
+		throw invalid_argument("The specified .rot file does not exist.");
+	}
+	int curr_int;
+	while(rstream >> curr_int) {
+		numbers[counter] = curr_int;
+		counter++;
+	}
+	return new Rotor(numbers);
 }
 
 //Creates a new Enigma machine from the supplied arguments
