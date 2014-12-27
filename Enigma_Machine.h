@@ -3,11 +3,13 @@
 
 class Enigma_Machine {
 public:
-	Enigma_Machine(); //TODO: Proper constructor
+	Enigma_Machine(Plugboard *plugboard, list<Rotor> rotors);
 	virtual ~Enigma_Machine();
 	int use(int);
 private:
-	//Plugboard and rotors etc
+	int use_reflector(int);
+	Plugboard *plugboard;
+	list<Rotor> rotors;
 };
 
 

@@ -12,6 +12,15 @@ Enigma_Machine *machine;
 
 //Creates a new Enigma machine with the supplied plugboards and rotors
 void configure(int argc, char **argv) {
+	if(argc == 0) {
+		//invalid
+	} else if(argc == 1) {
+		//no plugboard or rotors
+	} else if(argc == 2) {
+		//no  rotors
+	} else {
+		//First argument is plugboard, rest are rotors
+	}
 }
 
 //Encode takes a given char and passes it to the machine, then returns the ouput

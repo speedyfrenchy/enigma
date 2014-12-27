@@ -1,7 +1,17 @@
-#include "Enigma_Machine.h"
+#include<list>
+using namespace std;
 
-Enigma_Machine::Enigma_Machine() {
-	//TODO: Constructor
+#include "Enigma_Machine.h"
+#include "Plugboard.h"
+#include "Rotor.h"
+
+Enigma_Machine::Enigma_Machine(Plugboard *plugboard, list<Rotor> rotors) {
+	this->plugboard = plugboard;
+	this->rotors = rotors;
+}
+
+int Enigma_Machine::use_reflector(int i) {
+	return (i+13)%26;
 }
 
 int Enigma_Machine::use(int i) {
