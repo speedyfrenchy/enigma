@@ -37,30 +37,35 @@ void Enigma_Machine::rotate_rotors() {
 	}
 }
 
-int Enigma_Machine::use_rotors(int i) {
+int Enigma_Machine::use(int i) {
+	if (has_plugboard) {
+		i = plugboard->use(i);
+	}
 	list<Rotor>::iterator rotors_iter;
-	//First pass out to the reflector
-	for(rotors_iter = rotors.begin();
-			rotors_iter != rotors.end();
-			rotors_iter++) {
-			//Apply the effects of the current rotor
-			i = rotors_iter->use_forwards(i);
+	if (has_rotors) {
+		//First pass out to the reflector
+		for(rotors_iter = rotors.begin();
+				rotors_iter != rotors.end();
+				rotors_iter++) {
+				//Apply the effects of the current rotor
+				i = rotors_iter->use_forwards(i);
+		}
 	}
 	i = use_reflector(i);
-	//Second pass back from the reflector
-	for(rotors_iter = rotors.end();
-			rotors_iter != rotors.begin();) {
-			rotors_iter--;
-			//Apply the effects of the current rotor
-			i = rotors_iter->use_backwards(i);
+	if (has_rotors) {
+		//Second pass back from the reflector
+		for(rotors_iter = rotors.end();
+				rotors_iter != rotors.begin();) {
+				rotors_iter--;
+				//Apply the effects of the current rotor
+				i = rotors_iter->use_backwards(i);
+		}
+		//Once all the rotor's effects have been applied
+		rotate_rotors();
 	}
-	//Once all the rotor's effects have been applied
-	rotate_rotors();
-	return i;
-}
-
-int Enigma_Machine::use(int i) {
-	//TODO: Main encoding method
+	if (has_plugboard) {
+			i = plugboard->use(i);
+		}
 	return i;
 }
 
