@@ -77,7 +77,9 @@ void configure_machine(int argc, char **argv) {
 
 //Encode takes a given char and passes it to the machine, then returns the ouput
 char encode(char c) {
-  return c;
+	int i = c - 65;
+	i = machine->use(i);
+	return i + 65;
 }
 
 //valid checks if a character is allowed, ignored or disallowed.
