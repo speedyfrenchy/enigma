@@ -8,6 +8,8 @@ public:
 	int use(int);
 private:
 	int use_reflector(int);
+	bool has_plugboard = true;
+	bool has_rotors = true;
 	Plugboard *plugboard;
 	list<Rotor> rotors;
 };

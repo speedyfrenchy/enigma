@@ -6,8 +6,16 @@ using namespace std;
 #include "Rotor.h"
 
 Enigma_Machine::Enigma_Machine( list<Rotor> rotors, Plugboard *plugboard) {
-	this->rotors = rotors;
-	this->plugboard = plugboard;
+	if (rotors == NULL) {
+		has_rotors = false;
+	} else {
+		this->rotors = rotors;
+	}
+	if (plugboard == NULL) {
+			has_plugboard = false;
+		} else {
+			this->plugboard = rotors;
+		}
 }
 
 int Enigma_Machine::use_reflector(int i) {
