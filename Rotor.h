@@ -9,8 +9,8 @@ public:
 	int use_backwards(int);
 	bool rotate();
 private:
-	int numbersf [26]; // Mapping going forwards
-	int numbersb [26]; // Mapping going backwards
+	int numbers_f [26]; // Mapping going forwards
+	int numbers_b [26]; // Mapping going backwards
 	int offset;
 };
 

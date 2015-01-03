@@ -8,6 +8,7 @@ public:
 	int use(int);
 private:
 	int use_reflector(int);
+	void rotate_rotors();
 	bool has_plugboard = true;
 	bool has_rotors = true;
 	Plugboard *plugboard;

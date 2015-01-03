@@ -7,19 +7,18 @@ using namespace std;
 
 Rotor::Rotor(int numbers [26]) {
 	offset = 0;
-	numbersf = numbers;
+	numbers_f = numbers;
 
-	//Now, using numbersf, create numbersb
+	//Using numbersf, create numbersb
 	for(int i = 0; i < 26; i++) {
-		numbersb[numbersf[i]] = i;
+		numbers_b[numbers_f[i]] = i;
 	}
 }
 
 Rotor::~Rotor() {
-	//TODO: EXTERMINATE
 }
 
-//Return a flag indicating whether or not the rotation should be cascaded
+//Rotate, then return a bool indicating whether or not the rotation should be cascaded
 bool Rotor::rotate() {
 	if (offset < 25) {
 	  offset++;
@@ -32,10 +31,10 @@ bool Rotor::rotate() {
 }
 
 int Rotor::use_forwards(int i) {
-	return (numbersf[(i+offset)%26] - offset + 26)%26;
+	return (numbers_f[(i+offset)%26] - offset + 26)%26;
 }
 
 int Rotor::use_backwards(int i) {
-	return ((numbersb[(i + offset)%26] + 26) - offset)%26;
+	return ((numbers_b[(i + offset)%26] + 26) - offset)%26;
 }
 

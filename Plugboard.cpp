@@ -10,7 +10,6 @@ Plugboard::Plugboard(int plugs [26]) {
 }
 
 Plugboard::~Plugboard() {
-	//TODO: EXTERMINATE
 }
 
 int Plugboard::use (int i) {
